@@ -234,8 +234,110 @@ namespace Graph
                     gl.End();
                     gl.Flush(); // Thực hiện lệnh vẽ ngay lập tức thay vì đợi sau 1 khoảng thời gian
                     break;
+
+                case 4:
+                    Ctrl_Ponits.Clear();
+
+                    R = Math.Sqrt(Math.Pow(pStart.X - pEnd.X, 2) + Math.Pow(pStart.Y - pEnd.Y, 2));
+                    for (int i = 0; i < 360; i++)
+                    {
+                        if (i % 120 == 0)
+                        {
+                            thetar = (i * Math.PI + 189) / 180;
+                            pTemp.X = (int)(pStart.X + R * Math.Cos(thetar + Math.PI / 2));
+                            pTemp.Y = (int)(pStart.Y + R * Math.Sin(thetar + Math.PI / 2));
+                            Ctrl_Ponits.Add(pTemp);
+                        }
+                    }
+
+                    pTemp.X = Ctrl_Ponits[2].X;
+                    pTemp.Y = Ctrl_Ponits[1].Y;
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.X = Ctrl_Ponits[0].X;
+                    pTemp.Y = Ctrl_Ponits[3].Y;
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.X = Ctrl_Ponits[1].X;
+                    pTemp.Y = Ctrl_Ponits[0].Y;
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.X = Ctrl_Ponits[2].X;
+                    pTemp.Y = (Ctrl_Ponits[3].Y + Ctrl_Ponits[2].Y) / 2;
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.X = Ctrl_Ponits[0].X;
+                    Ctrl_Ponits.Add(pTemp);
+                    gl.Begin(OpenGL.GL_POINTS);
+                    for (int i = 0; i < Ctrl_Ponits.Count(); i++)
+                    {
+                        gl.Vertex(Ctrl_Ponits[i].X, gl.RenderContextProvider.Height - Ctrl_Ponits[i].Y);
+                    }
+                    gl.End();
+                    gl.Flush(); // Thực hiện lệnh vẽ ngay lập tức thay vì đợi sau 1 khoảng thời gian
+                    break;
+
+                case 5:
+                    Ctrl_Ponits.Clear();
+                    R = Math.Sqrt(Math.Pow(pStart.X - pEnd.X, 2) + Math.Pow(pStart.Y - pEnd.Y, 2));       
+                    double R1 = R * Math.Cos((36 * Math.PI)/ 180);
+                    pTemp.X = pStart.X;
+                    pTemp.Y = (int)(pStart.Y - R);
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.X = pStart.X;
+                    pTemp.Y = (int)(pStart.Y + R1);
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.X = (int)(pStart.X + R);
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.X = (int)(pStart.X - R);
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.Y = (int)(pStart.Y - R);
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.X = (int)(pStart.X + R);
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.Y = (int)((pTemp.Y + Ctrl_Ponits[2].Y) / 2);
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.X = (int)(pStart.X - R);
+                    Ctrl_Ponits.Add(pTemp);
+                    gl.Begin(OpenGL.GL_POINTS);
+                    for (int i = 0; i < Ctrl_Ponits.Count(); i++)
+                    {
+                        gl.Vertex(Ctrl_Ponits[i].X, gl.RenderContextProvider.Height - Ctrl_Ponits[i].Y);                  
+                    }
+                    gl.End();
+                    gl.Flush(); // Thực hiện lệnh vẽ ngay lập tức thay vì đợi sau 1 khoảng thời gian
+                    break;
+
+                case 6:
+                    Ctrl_Ponits.Clear();
+                    R = Math.Sqrt(Math.Pow(pStart.X - pEnd.X, 2) + Math.Pow(pStart.Y - pEnd.Y, 2));
+                    R1 = R * Math.Cos((30 * Math.PI) / 180);
+                    pTemp.X = pStart.X;
+                    pTemp.Y = (int)(pStart.Y - R1);
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.Y = (int)(pStart.Y + R1);
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.Y = pStart.Y;
+                    pTemp.X = (int)(pStart.X - R);
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.X = (int)(pStart.X + R);
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.X = Ctrl_Ponits[2].X;
+                    pTemp.Y = Ctrl_Ponits[0].Y;
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.Y = Ctrl_Ponits[1].Y;
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.X = Ctrl_Ponits[3].X;
+                    Ctrl_Ponits.Add(pTemp);
+                    pTemp.Y = Ctrl_Ponits[0].Y;
+                    Ctrl_Ponits.Add(pTemp);
+                    gl.Begin(OpenGL.GL_POINTS);
+                    for (int i = 0; i < Ctrl_Ponits.Count(); i++)
+                    {
+                        gl.Vertex(Ctrl_Ponits[i].X, gl.RenderContextProvider.Height - Ctrl_Ponits[i].Y);
+                    }
+                    gl.End();
+                    gl.Flush(); // Thực hiện lệnh vẽ ngay lập tức thay vì đợi sau 1 khoảng thời gian
+                    break;
             }
 
+            
 
 
 
