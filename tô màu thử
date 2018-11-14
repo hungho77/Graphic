@@ -1,0 +1,17 @@
+ private void Flood_fill(int x, int y, ref Sgraph sgraph, Color fill_color, ref OpenGL gl)
+        {
+           
+            if ((x > sgraph.pStart.X) && (x < sgraph.pEnd.X) && (y > sgraph.pStart.Y) && (y < sgraph.pEnd.Y))
+            {
+                gl.Color(fill_color.R / 255.0, fill_color.G / 255.0, fill_color.B / 255.0, 0);
+                gl.Begin(OpenGL.GL_POINTS);
+                gl.Vertex(x, gl.RenderContextProvider.Height - y);
+                gl.End();
+                gl.Flush();
+                Flood_fill(x + 1, y,ref sgraph, fill_color,ref gl);
+                Flood_fill(x + 1, y,ref sgraph, fill_color,ref gl);
+                Flood_fill(x - 2, y,ref sgraph, fill_color,ref gl);
+                Flood_fill(x, y + 2,ref sgraph, fill_color,ref gl);
+                Flood_fill(x, y - 2, ref sgraph, fill_color, ref gl);
+            }
+        }
