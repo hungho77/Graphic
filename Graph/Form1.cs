@@ -9,16 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-
 namespace Graph
 {
 
 
     public partial class Form1 : Form
     {
+        public const double epxilon = 0.5;
         private Point pStart;
         private Point pEnd;
+        private Point pClick;
         private Color colorUserColor;
         private int check = -1;
         private int size;
@@ -33,6 +33,11 @@ namespace Graph
         List<Sgraph> Lgraph = new List<Sgraph>();
         private Sgraph Stemp;
         private List<Point> Ctrl_Ponits = new List<Point>();
+
+        static double Calc_distance_two_point(Point pStart, Point pEnd)
+        {
+            return Math.Sqrt(Math.Pow(pStart.X - pEnd.X, 2) + Math.Pow(pStart.Y - pEnd.Y, 2));
+        }
 
         static void Repaint(Point pStart, Point pEnd, int Shape, ref OpenGL gl)
         {
@@ -49,7 +54,7 @@ namespace Graph
 
                 case 1: //vẽ hình tròn
                     double thetar;
-                    Rx = Math.Sqrt(Math.Pow(pStart.X - pEnd.X, 2) + Math.Pow(pStart.Y - pEnd.Y, 2));
+                    Rx = Calc_distance_two_point(pStart, pEnd);
                     gl.Begin(OpenGL.GL_LINE_LOOP);
                     for (int i = 0; i < 360; i++)
                     {
@@ -90,7 +95,7 @@ namespace Graph
                     break;
 
                 case 4: // vẽ tam giác
-                    Rx = Math.Sqrt(Math.Pow(pStart.X - pEnd.X, 2) + Math.Pow(pStart.Y - pEnd.Y, 2));
+                    Rx = Calc_distance_two_point(pStart, pEnd);
                     gl.Begin(OpenGL.GL_LINE_LOOP);
                     for (int i = 0; i < 360; i++)
                     {
@@ -105,7 +110,7 @@ namespace Graph
                     break;
 
                 case 5: // vẽ ngũ giác
-                    Rx = Math.Sqrt(Math.Pow(pStart.X - pEnd.X, 2) + Math.Pow(pStart.Y - pEnd.Y, 2));
+                    Rx = Calc_distance_two_point(pStart, pEnd);
                     gl.Begin(OpenGL.GL_LINE_LOOP);
                     for (int i = 0; i < 360; i += 72)
                     {
@@ -120,7 +125,7 @@ namespace Graph
                     break;
 
                 case 6: // vẽ lục giác
-                    Rx = Math.Sqrt(Math.Pow(pStart.X - pEnd.X, 2) + Math.Pow(pStart.Y - pEnd.Y, 2));
+                    Rx = Calc_distance_two_point(pStart, pEnd);
                     gl.Begin(OpenGL.GL_LINE_LOOP);
                     for (int i = 1; i < 360; i++)
                     {
@@ -144,6 +149,7 @@ namespace Graph
             switch (Shape)
             {
                 case 0: // đoạn thẳng
+
                     gl.Begin(OpenGL.GL_POINTS);
                     gl.Vertex(pStart.X, gl.RenderContextProvider.Height - pStart.Y);
                     gl.Vertex(pEnd.X, gl.RenderContextProvider.Height - pEnd.Y);
@@ -154,6 +160,7 @@ namespace Graph
                     Ctrl_Ponits.Clear();
                     double thetar;
                     double R = Math.Sqrt(Math.Pow(pStart.X - pEnd.X, 2) + Math.Pow(pStart.Y - pEnd.Y, 2));
+                    // tìm các điểm điều khiển
                     for (int i = 0; i < 360; i += 90)
                     {
                         thetar = i * Math.PI / 180;
@@ -173,6 +180,7 @@ namespace Graph
                     pTemp.X = Ctrl_Ponits[0].X;
                     pTemp.Y = Ctrl_Ponits[3].Y;
                     Ctrl_Ponits.Add(pTemp);
+                    // vẽ các điểm điều khiển
                     gl.Begin(OpenGL.GL_POINTS);
                     for (int i = 0; i < Ctrl_Ponits.Count(); i++)
                     {
@@ -184,6 +192,7 @@ namespace Graph
 
                 case 2: // hình chữ nhật
                     Ctrl_Ponits.Clear();
+                    // tìm các điểu khiển
                     Ctrl_Ponits.Add(pStart);
                     Ctrl_Ponits.Add(pEnd);
                     pTemp.X = pStart.X;
@@ -199,6 +208,7 @@ namespace Graph
                     Ctrl_Ponits.Add(pTemp);
                     pTemp.Y = pEnd.Y;
                     Ctrl_Ponits.Add(pTemp);
+                    // vẽ các điểm điều khiển
                     gl.Begin(OpenGL.GL_POINTS);
                     for (int i = 0; i < Ctrl_Ponits.Count(); i++)
                     {
@@ -210,6 +220,7 @@ namespace Graph
 
                 case 3:
                     Ctrl_Ponits.Clear();
+                    // tìm các điểm điều khiển
                     pTemp.X = 2 * pStart.X - pEnd.X;
                     pTemp.Y = 2 * pStart.Y - pEnd.Y;
                     Ctrl_Ponits.Add(pTemp);
@@ -226,6 +237,7 @@ namespace Graph
                     Ctrl_Ponits.Add(pTemp);
                     pTemp.X = pStart.X;
                     Ctrl_Ponits.Add(pTemp);
+                    // vẽ các điểm điều khiển
                     gl.Begin(OpenGL.GL_POINTS);
                     for (int i = 0; i < Ctrl_Ponits.Count(); i++)
                     {
@@ -239,6 +251,7 @@ namespace Graph
                     Ctrl_Ponits.Clear();
 
                     R = Math.Sqrt(Math.Pow(pStart.X - pEnd.X, 2) + Math.Pow(pStart.Y - pEnd.Y, 2));
+                    // tìm các điểm điều khiển
                     for (int i = 0; i < 360; i++)
                     {
                         if (i % 120 == 0)
@@ -264,6 +277,7 @@ namespace Graph
                     Ctrl_Ponits.Add(pTemp);
                     pTemp.X = Ctrl_Ponits[0].X;
                     Ctrl_Ponits.Add(pTemp);
+                    // vẽ các điểm điều khiển
                     gl.Begin(OpenGL.GL_POINTS);
                     for (int i = 0; i < Ctrl_Ponits.Count(); i++)
                     {
@@ -275,8 +289,9 @@ namespace Graph
 
                 case 5:
                     Ctrl_Ponits.Clear();
-                    R = Math.Sqrt(Math.Pow(pStart.X - pEnd.X, 2) + Math.Pow(pStart.Y - pEnd.Y, 2));       
-                    double R1 = R * Math.Cos((36 * Math.PI)/ 180);
+                    R = Math.Sqrt(Math.Pow(pStart.X - pEnd.X, 2) + Math.Pow(pStart.Y - pEnd.Y, 2));
+                    double R1 = R * Math.Cos((36 * Math.PI) / 180);
+                    // tìm các điểm điều khiển
                     pTemp.X = pStart.X;
                     pTemp.Y = (int)(pStart.Y - R);
                     Ctrl_Ponits.Add(pTemp);
@@ -295,10 +310,11 @@ namespace Graph
                     Ctrl_Ponits.Add(pTemp);
                     pTemp.X = (int)(pStart.X - R);
                     Ctrl_Ponits.Add(pTemp);
+                    // vẽ các điểm điều khiển
                     gl.Begin(OpenGL.GL_POINTS);
                     for (int i = 0; i < Ctrl_Ponits.Count(); i++)
                     {
-                        gl.Vertex(Ctrl_Ponits[i].X, gl.RenderContextProvider.Height - Ctrl_Ponits[i].Y);                  
+                        gl.Vertex(Ctrl_Ponits[i].X, gl.RenderContextProvider.Height - Ctrl_Ponits[i].Y);
                     }
                     gl.End();
                     gl.Flush(); // Thực hiện lệnh vẽ ngay lập tức thay vì đợi sau 1 khoảng thời gian
@@ -308,6 +324,7 @@ namespace Graph
                     Ctrl_Ponits.Clear();
                     R = Math.Sqrt(Math.Pow(pStart.X - pEnd.X, 2) + Math.Pow(pStart.Y - pEnd.Y, 2));
                     R1 = R * Math.Cos((30 * Math.PI) / 180);
+                    // tìm các điểm điều khiển
                     pTemp.X = pStart.X;
                     pTemp.Y = (int)(pStart.Y - R1);
                     Ctrl_Ponits.Add(pTemp);
@@ -327,6 +344,7 @@ namespace Graph
                     Ctrl_Ponits.Add(pTemp);
                     pTemp.Y = Ctrl_Ponits[0].Y;
                     Ctrl_Ponits.Add(pTemp);
+                    // vẽ các điểm điều khiển
                     gl.Begin(OpenGL.GL_POINTS);
                     for (int i = 0; i < Ctrl_Ponits.Count(); i++)
                     {
@@ -337,12 +355,66 @@ namespace Graph
                     break;
             }
 
-            
+
 
 
 
         }
 
+        // kiểm tra điểm thuộc đoạn thẳng
+        private bool Is_inLine(Point pClick, Point pStart, Point pEnd)
+        {
+            double d1 = Calc_distance_two_point(pStart, pEnd);
+            double d2 = Calc_distance_two_point(pStart, pClick);
+            double d3 = Calc_distance_two_point(pEnd, pClick);
+            if (d2 > d1 || d3 > d1)
+                return false;
+            double p = (d1 + d2 + d3) / 2;
+            double S = Math.Sqrt(p * (p - d1) * (p - d2) * (p - d3));
+            double h = 2 * S / d1;
+            if (h < epxilon)
+                return true;
+            return false;
+        }
+
+        // kiểm tra điểm thuộc hình tròn
+        private bool Is_inCircle(Point pClick, Point pStart, Point pEnd)
+        {
+            double R = Calc_distance_two_point(pStart, pEnd);
+            double R1 = Calc_distance_two_point(pClick, pStart);
+            if (Math.Abs(R1 - R) < epxilon)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        // kiểm tra điểm thuộc hình chữ nhật
+        private bool Is_inRectangle(Point pClick, Point pStart, Point pEnd)
+        {
+            Point pTemp = new Point();
+            pTemp.X = pEnd.X;
+            pTemp.Y = pStart.Y;
+            if (Is_inLine(pClick, pStart, pTemp))
+            {
+                return true;
+            }
+            if (Is_inLine(pClick, pEnd, pTemp))
+            {
+                return true;
+            }
+            pTemp.X = pStart.X;
+            pTemp.Y = pEnd.Y;
+            if (Is_inLine(pClick, pStart, pTemp))
+            {
+                return true;
+            }
+            if (Is_inLine(pClick, pEnd, pTemp))
+            {
+                return true;
+            }
+            return false;
+        }
         public Form1()
         {
             InitializeComponent();
@@ -505,6 +577,7 @@ namespace Graph
 
         private void Paint_MouseClick(object sender, MouseEventArgs e)
         {
+            pClick = e.Location;
 
         }
 

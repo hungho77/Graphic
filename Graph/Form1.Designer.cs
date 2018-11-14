@@ -50,8 +50,8 @@
             // 
             this.button1.ImageIndex = 0;
             this.button1.ImageList = this.ima_btn;
-            this.button1.Location = new System.Drawing.Point(9, 10);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(11, 57);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(40, 37);
             this.button1.TabIndex = 0;
@@ -74,8 +74,8 @@
             // 
             this.button2.ImageKey = "if_icon-ios7-circle-outline_211717.ico";
             this.button2.ImageList = this.ima_btn;
-            this.button2.Location = new System.Drawing.Point(9, 52);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Location = new System.Drawing.Point(11, 99);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(40, 44);
             this.button2.TabIndex = 1;
@@ -86,8 +86,8 @@
             // 
             this.btn_Rectangle.ImageIndex = 6;
             this.btn_Rectangle.ImageList = this.ima_btn;
-            this.btn_Rectangle.Location = new System.Drawing.Point(9, 101);
-            this.btn_Rectangle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Rectangle.Location = new System.Drawing.Point(11, 148);
+            this.btn_Rectangle.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Rectangle.Name = "btn_Rectangle";
             this.btn_Rectangle.Size = new System.Drawing.Size(40, 39);
             this.btn_Rectangle.TabIndex = 2;
@@ -98,8 +98,8 @@
             // 
             this.button4.ImageIndex = 1;
             this.button4.ImageList = this.ima_btn;
-            this.button4.Location = new System.Drawing.Point(9, 145);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Location = new System.Drawing.Point(11, 192);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(40, 36);
             this.button4.TabIndex = 3;
@@ -110,8 +110,8 @@
             // 
             this.btn_TamGiacDeu.ImageIndex = 3;
             this.btn_TamGiacDeu.ImageList = this.ima_btn;
-            this.btn_TamGiacDeu.Location = new System.Drawing.Point(9, 185);
-            this.btn_TamGiacDeu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_TamGiacDeu.Location = new System.Drawing.Point(11, 232);
+            this.btn_TamGiacDeu.Margin = new System.Windows.Forms.Padding(2);
             this.btn_TamGiacDeu.Name = "btn_TamGiacDeu";
             this.btn_TamGiacDeu.Size = new System.Drawing.Size(40, 38);
             this.btn_TamGiacDeu.TabIndex = 4;
@@ -122,8 +122,8 @@
             // 
             this.btn_NguGiac.ImageIndex = 4;
             this.btn_NguGiac.ImageList = this.ima_btn;
-            this.btn_NguGiac.Location = new System.Drawing.Point(9, 228);
-            this.btn_NguGiac.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_NguGiac.Location = new System.Drawing.Point(11, 275);
+            this.btn_NguGiac.Margin = new System.Windows.Forms.Padding(2);
             this.btn_NguGiac.Name = "btn_NguGiac";
             this.btn_NguGiac.Size = new System.Drawing.Size(40, 40);
             this.btn_NguGiac.TabIndex = 5;
@@ -134,8 +134,8 @@
             // 
             this.button7.ImageIndex = 5;
             this.button7.ImageList = this.ima_btn;
-            this.button7.Location = new System.Drawing.Point(9, 273);
-            this.button7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button7.Location = new System.Drawing.Point(11, 320);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(40, 38);
             this.button7.TabIndex = 6;
@@ -150,7 +150,7 @@
             this.openGLControl.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL2_1;
             this.openGLControl.RenderContextType = SharpGL.RenderContextType.DIBSection;
             this.openGLControl.RenderTrigger = SharpGL.RenderTrigger.TimerBased;
-            this.openGLControl.Size = new System.Drawing.Size(410, 254);
+            this.openGLControl.Size = new System.Drawing.Size(444, 346);
             this.openGLControl.TabIndex = 7;
             this.openGLControl.OpenGLInitialized += new System.EventHandler(this.openGLControl_OpenGLInitialized);
             this.openGLControl.OpenGLDraw += new SharpGL.RenderEventHandler(this.openGLControl_OpenGLDraw);
@@ -163,8 +163,8 @@
             // 
             // btn_BangMau
             // 
-            this.btn_BangMau.Location = new System.Drawing.Point(9, 323);
-            this.btn_BangMau.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_BangMau.Location = new System.Drawing.Point(11, 370);
+            this.btn_BangMau.Margin = new System.Windows.Forms.Padding(2);
             this.btn_BangMau.Name = "btn_BangMau";
             this.btn_BangMau.Size = new System.Drawing.Size(65, 33);
             this.btn_BangMau.TabIndex = 8;
@@ -192,7 +192,7 @@
             "4",
             "5"});
             this.cmBox_Size.Location = new System.Drawing.Point(150, 9);
-            this.cmBox_Size.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmBox_Size.Margin = new System.Windows.Forms.Padding(2);
             this.cmBox_Size.Name = "cmBox_Size";
             this.cmBox_Size.Size = new System.Drawing.Size(92, 21);
             this.cmBox_Size.TabIndex = 11;
@@ -202,7 +202,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(653, 429);
             this.Controls.Add(this.cmBox_Size);
             this.Controls.Add(this.lbl_Size);
             this.Controls.Add(this.btn_BangMau);
@@ -214,7 +214,7 @@
             this.Controls.Add(this.btn_Rectangle);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Paint";
             this.Load += new System.EventHandler(this.Paint_Load);
